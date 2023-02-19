@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build: .
+    tty: true
+    entrypoint: ["go", "run", "main.go"]
+    volumes:
+      - ./web:/go/src
+    ports:
+      - "3000:3000"
