@@ -11,9 +11,3 @@ func main() {
 
     router.Run(":3000")
 }
-
-func helloWorld(c *gin.Context) {
-    c.JSON(200, gin.H{
-        "message": "Hello World",
-    })
-}
