@@ -7,3 +7,15 @@ services:
       - ./web:/go/src
     ports:
       - "3000:3000"
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - ./web/docker/db/conf.d:/etc/mysql/conf.d
+      - ./web/docker/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "33066:3306"
+    command: mysqld --innodb_use_native_aio=0
